@@ -1,0 +1,31 @@
+/*
+Theme Name: History Magazine
+Theme URI: http://localhost/IHC/wordpress/wp-content/themes/historymag
+Description: A theme especially built for the Indian History Collective.
+Author: Anubha Bhat
+Author URI: http://anubhabhat.com
+Version: 1.0
+Tags: responsive, white, bootstrap, history, magazine, wordpress
+
+License: Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+License URI: http://creativecommons.org/licenses/by-sa/3.0/
+
+This simple theme was built using the example Bootstrap theme "Basic marketing site" found on the Bootstrap web site http://twitter.github.com/bootstrap/examples/hero.html
+*/
+
+@import url('css/bootstrap.min.css'); 
+body
+	{
+	font-family: 'Merriweather', serif;
+	}
+	
+	.label
+	{
+	border-radius: 0; !important
+	
+	}
+	
+	.label-default
+	{
+	background-color: #d02128;
+	}
