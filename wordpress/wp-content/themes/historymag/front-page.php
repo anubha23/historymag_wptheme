@@ -108,6 +108,7 @@ Nehru University</p>
 </div>
 <div class="row">
 <?php
+global $post;
 $args = array(
     'post_type' => 'post'
     );
@@ -119,10 +120,16 @@ if ( $query->have_posts() ) :
 	<div class="col-md-3" style="border-right: 2px solid #eeeeee;">
 
 <a class="thumbnail" href="#">
-<img src="http://placekitten.com/200/150" alt="top_story" />
+<img src="<?php the_field('featuredimage'); ?>" />
+<?php 
+//echo get_permalink($post->ID);
+/*the_field('featuredimage'); 
+/*echo $imagecontent[3][3];
+*/
+?>
 </a>
-<span style="color: #d02128; font-size: 17.5px;">INDIAN HISTORY</span>
-<p style="font-size: 17.5px;"><?php the_field('quote'); ?></p>
+<span style="color: #d02128; font-size: 17.5px;"><a href="<?php echo get_permalink($post->ID); ?>" target="_blank"><?php the_title(); ?></a></span><br/><br/>
+<p style="font-size: 16.5px;"><?php the_field('quote'); ?></p>
 
 </div>
     <?php endwhile;

@@ -20,6 +20,11 @@ body
 	font-family: 'Merriweather', serif;
 	}
 	
+a:active
+{	
+	 color: #d02128; !important
+}
+	
 	.label
 	{
 	border-radius: 0; !important
