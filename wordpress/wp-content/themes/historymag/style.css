@@ -14,6 +14,7 @@ This simple theme was built using the example Bootstrap theme "Basic marketing s
 */
 
 @import url('css/bootstrap.min.css'); 
+@import url('css/carousel.css'); 
 body
 	{
 	font-family: 'Merriweather', serif;
