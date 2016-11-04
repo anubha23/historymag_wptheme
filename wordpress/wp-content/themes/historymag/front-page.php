@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-<div class="container">
 <div class="row">
 <div class="col-md-4">
 <h3><span class="label label-default">TOP STORIES</span></h3>
@@ -180,5 +179,4 @@ of teaching it. The
 emphasis is on dates
 and events.</p>
 </div>-->
-</div>
 </div>
