@@ -23,5 +23,8 @@
   </head>
   <body>
   <div class="container">
+  <h3 id="header">
+<a href="<?php bloginfo('url'); ?>"><span style="color:#000000;font-size:30px;"><?php bloginfo('name'); ?></span></a>
+</h3>
   <?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 

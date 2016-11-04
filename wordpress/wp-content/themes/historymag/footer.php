@@ -1,9 +1,14 @@
 </div>
-<hr>
 
-      <footer>
-        <p>&copy; Indian History Collective 2016</p>
-      </footer>
+<hr />
+<center>
+<div id="footer">
+<p>
+<p>&copy; Indian History Collective 2016</p>
+<br />
+</p>
+</div>
+</center>
 
     </div> <!-- /container -->
 

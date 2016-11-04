@@ -35,3 +35,33 @@ a:active
 	{
 	background-color: #d02128;
 	}
+	
+	.menu
+	{
+		list-style:none;
+		margin-left:-52px;
+		margin-top:30px;
+	}
+	
+	.menu-item
+	{
+		display:inline;
+		font-size:18px;
+		margin-left:20px;
+	}
+	
+	.menu-item a
+	{
+		color:#7F7F7F;
+	}
+	
+	.homearchive
+	{
+		border-right: 2px solid #eeeeee; !important
+	}
+	
+	.homearchive:last-child
+	{
+		border-right:none;
+		
+	}

@@ -72,7 +72,7 @@ if ( $query->have_posts() ) :
 <?php the_field('excerpt'); ?>
 </div>
 <?php else : ?>
-	<div class="col-md-3" style="border-right: 2px solid #eeeeee;">
+	<div class="col-md-3"">
 <a class="thumbnail" href="#">
 <img src="<?php echo the_field('featuredimage'); ?>" alt="top_story" />
 </a>
@@ -110,7 +110,7 @@ if ( $query->have_posts() ) :
 
     while ( $i<4 && $query->have_posts() ) : $query->the_post(); ?>
 	
-	<div class="col-md-3" style="border-right: 2px solid #eeeeee;">
+	<div class="col-md-3 homearchive">
 
 <a class="thumbnail" href="#">
 <img src="<?php the_field('featuredimage'); ?>" />
@@ -180,3 +180,4 @@ emphasis is on dates
 and events.</p>
 </div>-->
 </div>
+<?php get_footer(); ?>
