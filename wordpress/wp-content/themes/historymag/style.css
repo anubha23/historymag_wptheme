@@ -14,7 +14,6 @@ This simple theme was built using the example Bootstrap theme "Basic marketing s
 */
 
 @import url('css/bootstrap.min.css'); 
-@import url('css/carousel.css'); 
 body
 	{
 	font-family: 'Merriweather', serif;
@@ -64,4 +63,30 @@ a:active
 	{
 		border-right:none;
 		
+	}
+	
+	.carousel-control.right
+	{background-image:none;
+	}
+	
+	.carousel-control.left
+	{
+		
+		background-image:none;
+	}
+	
+	.carousel-control
+	{
+		color:#7F7F7F;
+		display:none;
+	}
+	
+	.carousel-control:hover
+	{
+		color:#FFFFFF;
+	}
+	
+	.carousel .item
+	{
+		background:none;
 	}
