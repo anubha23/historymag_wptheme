@@ -7,6 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>INDIAN HISTORY COLLECTIVE</title>
 <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+<link rel="stylesheet" href="timeline/css/style.css" media="screen" />
     <!-- Bootstrap -->
     <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
 	<link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
@@ -20,6 +21,16 @@
     <![endif]-->
    <?php wp_enqueue_script("jquery"); ?>
     <?php wp_head(); ?>
+	
+	<script src="timeline/js/jquery.timelinr-0.9.6.js"></script>
+	
+	<script language="javascript">
+	jQuery(function(){
+			jQuery().timelinr({
+				arrowKeys: 'true'
+			})
+		});
+	</script>
   </head>
   <body>
   <div class="container">
