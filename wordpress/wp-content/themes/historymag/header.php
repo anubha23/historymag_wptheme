@@ -21,7 +21,7 @@
     <![endif]-->
    <?php wp_enqueue_script("jquery"); ?>
     <?php wp_head(); ?>
-	
+  <script>var $ = jQuery;</script>	
 	<script src="timeline/js/jquery.timelinr-0.9.6.js"></script>
 	
 	<script language="javascript">
