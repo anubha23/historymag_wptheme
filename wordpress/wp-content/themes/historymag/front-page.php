@@ -1,15 +1,29 @@
 <?php get_header(); ?>
 
 <div id="timeline">
-		<ul id="dates">
-			<li><a href="#1900">1900</a></li>
-			<li><a href="#1930">1930</a></li>
-			<li><a href="#1944">1944</a></li>
-			<li><a href="#1950">1950</a></li>
-			<li><a href="#1971">1971</a></li>
-		</ul>
+		
 		<ul id="issues">
-			<li id="1900">
+			<?php
+			$args = array(
+			'post_type' => 'post'
+			);
+			$i=0;
+			$query = new WP_Query( $args );
+			if ( $query->have_posts() ) :
+
+			while ( $query->have_posts() ) : $query->the_post();
+			
+			//if (the_field('eventyear')) :
+			?>
+			<li id="<?php echo the_field('eventyear'); ?>">
+			<div>
+			<h1><?php echo the_field('eventyear'); ?></h1><br/>
+			<img src="<?php the_field('featuredimage'); ?>" width="50%"/><br/>
+			<a href="<?php echo get_permalink($post->ID); ?>" target="_blank"><span style="color: #d02128; font-size: 17.5px;"><?php the_title(); ?></span></a><br/><br/>
+			</div>
+			</li>
+			
+			<!--<li id="1900">
 				<img src="timeline/images/1.png" width="256" height="256" />
 				<h1>1900</h1>
 				<p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
@@ -33,8 +47,54 @@
 				<img src="timeline/images/5.png" width="256" height="256" />
 				<h1>1971</h1>
 				<p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
-			</li>
+			</li>-->
+			
+		<?php
+		//else : 
+?>
+ <p><?php// _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+<?php //endif; 
+		endwhile;
+		 wp_reset_postdata();
+ 
+else : 
+?>
+ <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+<?php endif; ?>
 		
+		</ul>
+		<ul id="dates">
+		<?php
+		$args = array(
+			'post_type' => 'post'
+			);
+			$query = new WP_Query( $args );
+			if ( $query->have_posts() ) :
+
+			while ( $query->have_posts() ) : $query->the_post();
+			
+			//if (the_field('eventyear')) :
+			?>
+		
+		<li><a href="<?php echo "#". the_field('eventyear'); ?>"><?php echo the_field('eventyear'); ?></a></li>
+		
+		<?php	
+		//else : 
+?>
+ <p><?php //_e( 'Sorry, no posts matched your criteria.' ); ?></p>
+<?php //endif; 
+		endwhile;
+		 wp_reset_postdata();
+ 
+else : 
+?>
+ <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+<?php endif; ?>
+		<!--	<li><a href="#1900">1900</a></li>
+			<li><a href="#1930">1930</a></li>
+			<li><a href="#1944">1944</a></li>
+			<li><a href="#1950">1950</a></li>
+			<li><a href="#1971">1971</a></li>-->
 		</ul>
 		<div id="grad_left"></div>
 		<div id="grad_right"></div>
