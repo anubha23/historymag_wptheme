@@ -19,10 +19,40 @@ body
 	font-family: 'Merriweather', serif;
 	}
 	
+	
 a:active
 {	
 	 color: #d02128; !important
 }
+
+a:hover
+
+{
+	color: #d02128; !important
+}
+
+a
+{
+	color: #d02128; !important
+}
+
+#header a:active
+{
+	color: #333; !important
+}
+
+#header a:hover
+{
+	text-decoration: none;
+	color: #333; !important
+}
+
+#header a
+{
+	color: #333; !important
+}
+
+
 	
 	.label
 	{
@@ -73,14 +103,19 @@ a:active
 	{
 		
 		background-image:none;
+		display: none;
 	}
 	
 	.carousel-control
 	{
 		color:#7F7F7F;
-		display:none;
+		/*display:none;*/
 	}
 	
+	.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next
+	{
+		margin-right:-120px;
+	}
 	.carousel-control:hover
 	{
 		color:#FFFFFF;
@@ -89,4 +124,10 @@ a:active
 	.carousel .item
 	{
 		background:none;
+	}
+	
+	.pagelinks
+	{
+		
+		color: #d02128;
 	}
