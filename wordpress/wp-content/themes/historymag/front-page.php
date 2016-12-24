@@ -1,4 +1,125 @@
 <?php get_header(); ?>
+<br/>
+<div class="timeline">
+<h3><span class="label label-default">TIMELINE</span></h3>
+
+<?php 
+
+/*$arrcat= wp_list_categories( array(
+        'orderby'    => 'name'));
+		
+		print_r($arrcat[0]);*/
+		
+		
+$categories = get_categories( array(
+    'orderby' => 'name',
+    'parent'  => 0
+) );
+//print_r($categories);
+		?>
+	<select name="categories">
+<?php
+
+	foreach ( $categories as $category ) {
+	echo('<option value="'.esc_html($category->name).'">'.esc_html($category->name).'</option>');
+	}	
+?>
+	
+	</select>
+	
+	<?php
+	$args = array(
+    'post_type' => 'post'
+    );
+	$allperiods=array();
+	$query = new WP_Query( $args );
+	if ( $query->have_posts() ) :
+
+    while ( $query->have_posts() ) : $query->the_post(); 
+	$allperiods[]=get_field("eventyear");
+	endwhile;
+	wp_reset_postdata();
+	endif;
+	
+	 $periods = array_unique($allperiods);
+	 ?>
+  
+  <select name="period">
+  <?php
+ foreach ( $periods as $period ) {
+	echo('<option value="'.esc_html($period).'">'.esc_html($period).'</option>');
+	}	
+	
+?>  
+	
+  </select>
+  <br/>
+  
+  <button>Scroll</button>
+	<div id="buttons">
+			<a class="prev" href="#">Previous</a>
+			<a class="next" href="#">Next</a>
+			<br class="clear" />
+		</div>
+  <div class="container-outer" id="target">
+	
+   <div class="container-inner">
+   <ul>
+   <?php
+   $args = array(
+    'post_type' => 'post'
+    );
+	$j=1;
+	$query = new WP_Query( $args );
+	if ( $query->have_posts() ) :
+
+    while ( $query->have_posts() ) : $query->the_post(); 
+	
+   echo '<li class="content" id="item'.$j.'">';
+   ?>
+   <table class="contentgrp" style="margin-right: 10px;">
+   <tr><td>
+   <span style="color: #d02128; font-size: 12px;"><?php the_field('eventyear'); ?></span>
+   </td></tr>
+   <tr><td>
+		<img src="<?php echo the_field('featuredimage'); ?>" width="200px" />
+	</td></tr>
+	<tr><td width="100px">
+		<a href="<?php echo get_permalink($post->ID); ?>" target="_blank"><span style="color: #d02128; font-size: 17.5px;"><?php the_title(); ?></span></a>
+	</td></tr>
+	</table>
+		</li>
+	<?php
+	$j++;
+	endwhile;
+	wp_reset_postdata();
+	endif;
+	
+?>	
+	<!--  <li class="content">
+	  <img src="http://placehold.it/350x200" alt="top_story" />
+	  </li>
+	  
+	  <li class="content" id="item3">
+	  <img src="http://placehold.it/350x200" alt="top_story" />
+	  </li>
+	  
+	  <li class="content" id="item4">
+	  <img src="http://placehold.it/350x200" alt="top_story" />
+	  </li>
+	  
+	  <li class="content" id="item5">
+	  <img src="http://placehold.it/350x200" alt="top_story" />
+	  </li>-->
+	
+	</ul>
+   </div>	
+</div>
+  
+
+</div>
+
+
 
 <h3><span class="label label-default">TOP STORIES</span></h3>
 <!--Carousel-->

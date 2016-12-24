@@ -7,7 +7,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>INDIAN HISTORY COLLECTIVE</title>
 <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-<!--<link rel="stylesheet" href="timeline/css/style.css" media="screen" />-->
+<link rel="stylesheet" href="timeline/css/style.css" media="screen" />
+<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/historymag/js/jquery.scrollTo.js"></script>-->
     <!-- Bootstrap -->
     <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
 	<link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
@@ -20,7 +22,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
    <?php wp_enqueue_script("jquery"); ?>
+
     <?php wp_head(); ?>
+	
   <!--<script>var $ = jQuery;</script>	
 	<script src="timeline/js/jquery.timelinr-0.9.6.js"></script>
 	
@@ -31,6 +35,8 @@
 			})
 		});
 	</script>-->
+	
+	
   </head>
   <body>
   <div class="container">
@@ -38,4 +44,3 @@
 <a href="<?php bloginfo('url'); ?>"><span style="color:#000000;font-size:30px;"><?php bloginfo('name'); ?></span></a>
 </h3>
   <?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
-

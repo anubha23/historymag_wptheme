@@ -52,6 +52,15 @@ a
 	color: #333; !important
 }
 
+.timeline
+	{
+		border-top: 1px solid #d02128;
+	}
+	
+	.timeline h3
+	{
+		margin-top: 0px;
+	}
 
 	
 	.label
@@ -68,7 +77,7 @@ a
 	.menu
 	{
 		list-style:none;
-		margin-left:-52px;
+		margin-left:0px;
 		margin-top:30px;
 	}
 	
@@ -131,3 +140,24 @@ a
 		
 		color: #d02128;
 	}
+	
+	.container-outer { 
+
+overflow-x: hidden; 
+overflow-y:hidden;
+width: 1000px; 
+height: 500px; 
+
+}
+.container-inner { width: 10000px; 
+}
+
+.content
+{
+display:inline;
+float:left;
+list-style:none;
+}
+
+	
+	
