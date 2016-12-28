@@ -1,10 +1,82 @@
 <?php 
 
+
+function example_ajax_request() {
+ 
+    // The $_REQUEST contains all the data sent via ajax
+   // if ( isset($_REQUEST) ) {
+     
+     //  echo "Hello Ajax";
+     
+   // }
+?>
+ <ul id="dates">
+   <?php
+  
+    $category_name= $_REQUEST['cat_name'];
+    $period_value= $_REQUEST['period_value'];
+    
+if ($category_name != "" )  :
+   $args = array(
+    'post_type' => 'post',
+    'category_name'=> $category_name,'meta_key'=> 'eventyear','orderby'=> 'meta_value', 'order' => 'ASC' 
+    );
+
+endif;
+
+if ($category_name == "" )  :
+	 $args = array(
+    'post_type' => 'post','meta_key'=> 'eventyear','orderby'=> 'meta_value', 'order' => 'ASC' 
+    );
+endif;
+
+	$j=1;
+	$query = new WP_Query( $args );
+	if ( $query->have_posts() ) :
+
+    while ( $query->have_posts() ) : $query->the_post(); 
+
+if ($period_value == get_field('eventyear') || $period_value=="")  :
+	
+   echo '<li class="content" id="item'.$j.'">';
+   ?>
+   <table class="contentgrp" style="margin-right: 10px;">
+   <tr><td>
+   <span style="color: #d02128; font-size: 12px;"><?php the_field('eventyear'); ?></span>
+   </td></tr>
+   <tr><td>
+		<img src="<?php echo the_field('featuredimage'); ?>" width="200px" />
+	</td></tr>
+	<tr><td width="100px">
+		<a href="<?php echo get_permalink($post->ID); ?>" target="_blank"><span style="color: #d02128; font-size: 17.5px;"><?php the_title(); ?></span></a>
+	</td></tr>
+	</table>
+		</li>
+	<?php
+	$j++;
+endif;
+	endwhile;
+	wp_reset_postdata();
+	endif;
+	
+?>
+	
+	</ul>
+
+<?php 
+    // Always die in functions echoing ajax content
+   die();
+}
+
+add_action( 'wp_ajax_example_ajax_request', 'example_ajax_request' );
+add_action( 'wp_ajax_nopriv_example_ajax_request', 'example_ajax_request' );
+
+
 function wpbootstrap_scripts_with_jquery()
 {
 	// Register the script like this for a theme:
 	wp_register_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.js', array( 'jquery' ) );
-	wp_register_script( 'scrollTo', get_template_directory_uri() . '/js/jQuery.scrollTo.js', array( 'jquery' ) );
+	wp_register_script( 'scrollTo', get_template_directory_uri() . '/js/jquery.scrollTo.js', array( 'jquery' ) );
 	// For either a plugin or a theme, you can then enqueue the script:
 	wp_enqueue_script( 'bootstrap' );
 	wp_enqueue_script( 'scrollTo' );
@@ -50,7 +122,7 @@ function widget( $args, $instance ) {
 	*/
 	echo $args['before_widget'];
 	if ( ! empty( $instance['title'] ) ) {
-		echo '<a href="http://localhost/IHC/wordpress/archive/" >'. $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'].'</a>';
+		echo '<a href="#" >'. $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'].'</a>';
 	}
 
 	/*
@@ -113,4 +185,5 @@ function wpb_load_widget() {
 }
 add_action( 'widgets_init', 'wpb_load_widget' );
 	
+
 ?>

@@ -149,7 +149,7 @@ width: 1000px;
 height: 500px; 
 
 }
-.container-inner { width: 10000px; 
+.container-inner { width: 10000px;
 }
 
 .content
@@ -159,5 +159,27 @@ float:left;
 list-style:none;
 }
 
+.glyphicon-triangle-left
+{
+	color: #d02128;
+	/*top:100px; !important*/
+
 	
+}
+
+.glyphicon-triangle-left:hover
+{
+	cursor:pointer;
+}
+
+.glyphicon-triangle-right
+{
+	color: #d02128;
+	right:-1000px;
+}
+
+.glyphicon-triangle-right:hover
+{
+		cursor:pointer;
+}
 	

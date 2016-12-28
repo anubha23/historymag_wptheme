@@ -1,6 +1,8 @@
 <?php get_header(); ?>
 <br/>
-<div class="timeline">
+
+
+<div class="timeline" id="timeline">
 <h3><span class="label label-default">TIMELINE</span></h3>
 
 <?php 
@@ -17,9 +19,9 @@ $categories = get_categories( array(
 ) );
 //print_r($categories);
 		?>
-	<select name="categories">
+	<select name="categories" id="categories" class="filterpostcontrol" >
 <?php
-
+	echo('<option value="">Select Category</option>');
 	foreach ( $categories as $category ) {
 	echo('<option value="'.esc_html($category->name).'">'.esc_html($category->name).'</option>');
 	}	
@@ -44,8 +46,9 @@ $categories = get_categories( array(
 	 $periods = array_unique($allperiods);
 	 ?>
   
-  <select name="period">
+  <select name="period" id="period" class="filterpostcontrol">
   <?php
+echo('<option value="">Select Year</option>');
  foreach ( $periods as $period ) {
 	echo('<option value="'.esc_html($period).'">'.esc_html($period).'</option>');
 	}	
@@ -56,18 +59,21 @@ $categories = get_categories( array(
   <br/>
   
   <button>Scroll</button>
-	<div id="buttons">
-			<a class="prev" href="#">Previous</a>
-			<a class="next" href="#">Next</a>
+	<!--<div id="buttons">
+			<a class="prev" id="prev1" href="#">Previous</a>
+			<a class="next" id="next1" href="#">Next</a>
 			<br class="clear" />
-		</div>
+		</div>-->
+			<span class="glyphicon glyphicon-triangle-left"></span>
+			 <span class="glyphicon glyphicon-triangle-right"></span> 
   <div class="container-outer" id="target">
-	
+
    <div class="container-inner">
-   <ul>
+   
+   <ul id="dates">
    <?php
-   $args = array(
-    'post_type' => 'post'
+    $args = array(
+    'post_type' => 'post','meta_key'=> 'eventyear','orderby'=> 'meta_value', 'order' => 'ASC' 
     );
 	$j=1;
 	$query = new WP_Query( $args );
@@ -96,11 +102,21 @@ $categories = get_categories( array(
 	endif;
 	
 ?>	
-	<!--  <li class="content">
-	  <img src="http://placehold.it/350x200" alt="top_story" />
-	  </li>
+	<!--<li class="content">
+	 <table class="contentgrp" style="margin-right: 10px;">
+   <tr><td>
+   <span style="color: #d02128; font-size: 12px;"><?php the_field('eventyear'); ?></span>
+   </td></tr>
+   <tr><td>
+		  <img src="http://placehold.it/350x200" alt="top_story" width="200px" />
+	</td></tr>
+	<tr><td width="100px">
+		<a href="#" target="_blank"><span style="color: #d02128; font-size: 17.5px;">Sample Title</span></a>
+	</td></tr>
+	</table>
+		</li>-->
 	  
-	  <li class="content" id="item3">
+	<!--  <li class="content" id="item3">
 	  <img src="http://placehold.it/350x200" alt="top_story" />
 	  </li>
 	  
@@ -114,6 +130,7 @@ $categories = get_categories( array(
 	
 	</ul>
    </div>	
+ 
 </div>
   
 

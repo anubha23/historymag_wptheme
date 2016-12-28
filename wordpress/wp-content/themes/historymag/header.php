@@ -7,7 +7,6 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>INDIAN HISTORY COLLECTIVE</title>
 <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-<link rel="stylesheet" href="timeline/css/style.css" media="screen" />
 <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="wp-content/themes/historymag/js/jquery.scrollTo.js"></script>-->
     <!-- Bootstrap -->
