@@ -2,9 +2,12 @@
 <br/>
 
 
-<div class="timeline" id="timeline">
-<h3><span class="label label-default">TIMELINE</span></h3>
+<div class="timeline" id="timeline" style="position:relative;">
+<h3><span class="label label-default">TIMELINE</span>
+<span style="float: right;font-size: 12px;padding-top: 5px;color: #7F7F7F; cursor:pointer;" class="spanclickexpand">CLICK TO EXPAND <span class="glyphicon glyphicon-plus" style="padding-left: 7px;font-size: 14px"></span></span>
+</h3>
 
+<div class="divfilter" style="margin-bottom:5px; display:none;">
 <?php 
 
 /*$arrcat= wp_list_categories( array(
@@ -56,23 +59,32 @@ echo('<option value="">Select Year</option>');
 ?>  
 	
   </select>
-  <br/>
+</div>
+
   
-  <button>Scroll</button>
+  <!--<button>Scroll</button>-->
 	<!--<div id="buttons">
 			<a class="prev" id="prev1" href="#">Previous</a>
 			<a class="next" id="next1" href="#">Next</a>
 			<br class="clear" />
-		</div>-->
-			<span class="glyphicon glyphicon-triangle-left"></span>
-			 <span class="glyphicon glyphicon-triangle-right"></span> 
-  <div class="container-outer" id="target">
+		</div>
+			<span class="glyphicon glyphicon-triangle-left timelineleft"></span>
+			 <span class="glyphicon glyphicon-triangle-right timelineright"></span> -->
 
+<a class="carousel-control left timelineleft" style="display:inline !important; top:30px;" >
+<span class="glyphicon glyphicon-chevron-left glyphicon-triangle-left"  style="margin-left:-110px; "></span>
+</a>
+<a class="carousel-control right timelineright" style="top:30px;" >
+<span class="glyphicon glyphicon-chevron-right glyphicon-triangle-right"></span>
+</a>
+
+
+  <div class="container-outer" id="target">
+	
    <div class="container-inner">
-   
    <ul id="dates">
    <?php
-    $args = array(
+   $args = array(
     'post_type' => 'post','meta_key'=> 'eventyear','orderby'=> 'meta_value', 'order' => 'ASC' 
     );
 	$j=1;
@@ -102,21 +114,11 @@ echo('<option value="">Select Year</option>');
 	endif;
 	
 ?>	
-	<!--<li class="content">
-	 <table class="contentgrp" style="margin-right: 10px;">
-   <tr><td>
-   <span style="color: #d02128; font-size: 12px;"><?php the_field('eventyear'); ?></span>
-   </td></tr>
-   <tr><td>
-		  <img src="http://placehold.it/350x200" alt="top_story" width="200px" />
-	</td></tr>
-	<tr><td width="100px">
-		<a href="#" target="_blank"><span style="color: #d02128; font-size: 17.5px;">Sample Title</span></a>
-	</td></tr>
-	</table>
-		</li>-->
+	<!--  <li class="content">
+	  <img src="http://placehold.it/350x200" alt="top_story" />
+	  </li>
 	  
-	<!--  <li class="content" id="item3">
+	  <li class="content" id="item3">
 	  <img src="http://placehold.it/350x200" alt="top_story" />
 	  </li>
 	  
@@ -130,9 +132,9 @@ echo('<option value="">Select Year</option>');
 	
 	</ul>
    </div>	
- 
 </div>
   
+<div class="divfilter divrulerpart" style="margin-bottom:5px;"></div>
 
 </div>
 
@@ -197,10 +199,10 @@ echo('<option value="">Select Year</option>');
 	
 	<!-- Carousel nav -->
     <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="glyphicon glyphicon-chevron-left glyphicon-triangle-left"></span>
     </a>
     <a class="carousel-control right" href="#myCarousel" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="glyphicon glyphicon-chevron-right glyphicon-triangle-right"></span>
     </a>
 	</div>
  

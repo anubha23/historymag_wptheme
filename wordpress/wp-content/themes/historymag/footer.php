@@ -14,21 +14,23 @@
 
 	
 	<?php wp_footer(); ?>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-touch-events/1.0.5/jquery.mobile-events.js"></script>
 <script>
 	  (function($) {
-		$(document).ready(function() {	
-		$('.glyphicon-triangle-left').hide();
+			$(document).ready(function() {	
+		$('.timelineleft').hide();
 		
 			
 			$('button').click(function(){//this is not the cleanest way to do this, I'm just keeping it short.
 				$('#target').scrollTo(document.getElementById('item5'), 2500);
 			});
 			
-			$('.glyphicon-triangle-left').click(function () {
+			$('.timelineleft').click(function () {
 				$('#target').scrollTo('-=200px', 1000);
 			});
 			
-			$('.glyphicon-triangle-right').click(function () {
+			$('.timelineright').click(function () {
+
 				$('#target').scrollTo('+=200px', 1000);
 			});
 			
@@ -37,28 +39,28 @@
 				contentwidth=$('.content').width()*$('.content').length;
 				leftscroll=contentwidth-960;
 				
-     if ($(this).scrollLeft() > 1) {// can be whatever, 0 refers to the top space you allow
-        $('.glyphicon-triangle-left').show();// Hide your element
+     if ($(this).scrollLeft() > 1) {
+        $('.timelineleft').show();// Hide your element
 		//alert($(this).scrollLeft());
 		//alert($('.content').length);
 		//alert($('.container-inner').width()-$('.container-outer').width());
     }
 	
 	else{
-		$('.glyphicon-triangle-left').hide();
+		$('.timelineleft').hide();
 	}
 			
 	
 	 if ($(this).scrollLeft() == leftscroll) {
 		 
-		 $('.glyphicon-triangle-right').hide();
+		 $('.timelineright').hide();
 		 
 	 }
 	 
 	 else
 		 
 		 {
-			  $('.glyphicon-triangle-right').show();
+			  $('.timelineright').show();
 		 }
 
     /*else {
@@ -78,12 +80,15 @@ $('.filterpostcontrol').change(function(){
 
 
 $.ajax({
-        url: "http://<?php echo $_SERVER[HTTP_HOST]; ?>/IHC/wordpress/wp-admin/admin-ajax.php",
+        url: "http://<?php echo $_SERVER[HTTP_HOST]; ?>/ihc/wordpress/wp-admin/admin-ajax.php",
         data: {'action':'example_ajax_request','cat_name': post_id,'period_value': period_value } ,
         success:function(data) {
             // This outputs the result of the ajax request
            // console.log(data);
 $(".container-inner").html(data);
+$('#target').scrollTo('1px', 1);
+$('.timelineright').show();
+$('.timelineleft').hide();
         },
         error: function(errorThrown){
 //alert("Hello Ajax Error");
@@ -95,6 +100,30 @@ return false;
 
 
 	
+$('.spanclickexpand').click(function(){
+$('.divfilter').toggle(600);
+if ( $('.spanclickexpand span').attr('class')=="glyphicon glyphicon-plus")
+{
+$('.spanclickexpand span').removeClass("glyphicon glyphicon-plus");
+$('.spanclickexpand span').addClass("glyphicon glyphicon-minus");
+}
+else
+{
+$('.spanclickexpand span').removeClass("glyphicon glyphicon-minus");
+$('.spanclickexpand span').addClass("glyphicon glyphicon-plus");
+}
+
+
+});
+
+
+if($(window).width()<769)
+{
+$('.timelineleft span').addClass("glyphicon-triangle-top");
+$('.timelineright span').addClass("glyphicon-triangle-bottom");
+}
+
+
 });
 	  })(jQuery);
 	</script>
