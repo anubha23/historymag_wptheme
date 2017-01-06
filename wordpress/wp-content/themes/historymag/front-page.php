@@ -22,7 +22,7 @@ $categories = get_categories( array(
 ) );
 //print_r($categories);
 		?>
-	<select name="categories" id="categories" class="filterpostcontrol" >
+	<select name="categories" id="categories" class="filterpostcontrol form-control" style=" width:160px; display:inline !important;" >
 <?php
 	echo('<option value="">Select Category</option>');
 	foreach ( $categories as $category ) {
@@ -49,7 +49,7 @@ $categories = get_categories( array(
 	 $periods = array_unique($allperiods);
 	 ?>
   
-  <select name="period" id="period" class="filterpostcontrol">
+  <select name="period" id="period" class="filterpostcontrol form-control" style=" width:160px; display:inline !important;">
   <?php
 echo('<option value="">Select Year</option>');
  foreach ( $periods as $period ) {
@@ -103,7 +103,7 @@ echo('<option value="">Select Year</option>');
 		<img src="<?php echo the_field('featuredimage'); ?>" width="200px" />
 	</td></tr>
 	<tr><td width="100px">
-		<a href="<?php echo get_permalink($post->ID); ?>" target="_blank"><span style="color: #d02128; font-size: 17.5px;"><?php the_title(); ?></span></a>
+		<a href="<?php echo get_permalink($post->ID); ?>" target="_blank"><span style="color: #d02128; font-size: 17.5px;"><?php echo the_field('timelinetitle'); ?></span></a>
 	</td></tr>
 	</table>
 		</li>
@@ -263,7 +263,7 @@ else : ?>
 
 <div class="row">
 <div class="col-md-12">
-<h3><span class="label label-default">ARCHIVE</span></h3>
+<h3><span class="label label-default"><a href="http://thebigindianpicture.com/ihcbeta/archive" target="_blank" style="color:#FFFFFF;">ARCHIVE</span></a></h3>
 </div>
 </div>
 <div class="row">
@@ -297,7 +297,6 @@ if ( $query->have_posts() ) :
 	$i++;
 	endwhile;
   wp_reset_postdata();
- 
 else : 
 ?>
  <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>

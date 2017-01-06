@@ -1,6 +1,92 @@
 <?php 
 
 
+function example_ajax_request1() {
+ 
+    // The $_REQUEST contains all the data sent via ajax
+   // if ( isset($_REQUEST) ) {
+     
+     //  echo "Hello Ajax";
+     
+   // }
+?>
+<br/>
+   <?php
+  
+    $category_name= $_REQUEST['cat_name'];
+    $period_value= $_REQUEST['period_value'];
+    
+if ($category_name != "" )  :
+   $args = array(
+    'post_type' => 'post',
+    'category_name'=> $category_name,'meta_key'=> 'eventyear','orderby'=> 'meta_value', 'order' => 'ASC' 
+    );
+
+endif;
+
+if ($category_name == "" )  :
+	 $args = array(
+    'post_type' => 'post','meta_key'=> 'eventyear','orderby'=> 'meta_value', 'order' => 'ASC' 
+    );
+endif;
+
+$i=0;
+	$query = new WP_Query( $args );
+	if ( $query->have_posts() ) :
+
+    while ( $query->have_posts() ) : $query->the_post(); 
+
+if ($period_value == get_field('eventyear') || $period_value=="")  : 
+	
+   $i++; 
+
+if ($i==4) : 
+$i=1;
+?>
+</div>
+ <?php endif; ?>	
+
+<?php if ($i==1) : ?>
+<div class="row">
+        <?php endif; ?>	
+
+
+<div class="col-md-4 ">
+	
+	<img src="<?php echo the_field('featuredimage'); ?>" width="100%" />
+    <h3><a style="font-size: 17.5px;" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+	<p style="font-size: 17.5px;"><blockquote><?php the_field('quote'); ?></blockquote></p>
+<p style="font-size: 15px;"><?php the_field('excerpt'); ?></p>
+    <p><em><?php the_time('l, F jS, Y'); ?></em></p>
+    
+</div>
+
+<?php
+endif;
+	endwhile;
+
+if ($i<4) : 
+$i=1;
+?>
+</div>
+ <?php endif; 
+
+	wp_reset_postdata();
+	endif;
+	
+?>
+	
+
+
+<?php 
+    // Always die in functions echoing ajax content
+   die();
+}
+
+add_action( 'wp_ajax_example_ajax_request', 'example_ajax_request' );
+add_action( 'wp_ajax_nopriv_example_ajax_request', 'example_ajax_request' );
+
+
 function example_ajax_request() {
  
     // The $_REQUEST contains all the data sent via ajax
@@ -48,7 +134,7 @@ if ($period_value == get_field('eventyear') || $period_value=="")  :
 		<img src="<?php echo the_field('featuredimage'); ?>" width="200px" />
 	</td></tr>
 	<tr><td width="100px">
-		<a href="<?php echo get_permalink($post->ID); ?>" target="_blank"><span style="color: #d02128; font-size: 17.5px;"><?php the_title(); ?></span></a>
+		<a href="<?php echo get_permalink($post->ID); ?>" target="_blank"><span style="color: #d02128; font-size: 17.5px;"><?php echo the_field('timelinetitle'); ?></span></a>
 	</td></tr>
 	</table>
 		</li>
@@ -68,8 +154,8 @@ endif;
    die();
 }
 
-add_action( 'wp_ajax_example_ajax_request', 'example_ajax_request' );
-add_action( 'wp_ajax_nopriv_example_ajax_request', 'example_ajax_request' );
+add_action( 'wp_ajax_example_ajax_request1', 'example_ajax_request1' );
+add_action( 'wp_ajax_nopriv_example_ajax_request1', 'example_ajax_request1' );
 
 
 function wpbootstrap_scripts_with_jquery()
@@ -122,7 +208,7 @@ function widget( $args, $instance ) {
 	*/
 	echo $args['before_widget'];
 	if ( ! empty( $instance['title'] ) ) {
-		echo '<a href="#" >'. $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'].'</a>';
+		echo '<a href="http://thebigindianpicture.com/ihcbeta/archive" target="_blank">'. $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'].'</a>';
 	}
 
 	/*

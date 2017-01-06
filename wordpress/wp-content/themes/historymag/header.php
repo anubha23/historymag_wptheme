@@ -23,15 +23,6 @@
    <?php wp_enqueue_script("jquery"); ?>
     <?php wp_head(); ?>	
 
-<script>
-
-		$(function(){
-			$().timelinr({
-				arrowKeys: 'true'
-			})
-		});
-	
-	</script>
 	<!--<script src="timeline/js/jquery.timelinr-0.9.6.js"></script>
 	
 	<script>

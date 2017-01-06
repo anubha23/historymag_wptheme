@@ -14,7 +14,7 @@
 
 	
 	<?php wp_footer(); ?>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-touch-events/1.0.5/jquery.mobile-events.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-touch-events/1.0.5/jquery.mobile-events.js"></script>
 <script>
 	  (function($) {
 			$(document).ready(function() {	
@@ -38,6 +38,12 @@
 				var contentwidth, leftscroll;
 				contentwidth=$('.content').width()*$('.content').length;
 				leftscroll=contentwidth-960;
+				if($(window).width()<769)
+				{contentwidth=$('.content').height()*$('.content').length;
+				leftscroll=contentwidth-960;}
+				
+				
+				
 				
      if ($(this).scrollLeft() > 1) {
         $('.timelineleft').show();// Hide your element
@@ -75,7 +81,7 @@ $('.filterpostcontrol').change(function(){
 	
 	//alert(post_id);
         $(".container-inner").html("loading...");
-      //  $(".container-inner").load("http://<?php echo $_SERVER[HTTP_HOST]; ?>/ihcbeta/ajax/",{catid:post_id});
+      //  $(".container-inner").load("http://<?php echo $_SERVER[HTTP_HOST]; ?>/ihc/wordpress/ajax/",{catid:post_id});
 
 
 
@@ -122,6 +128,37 @@ if($(window).width()<769)
 $('.timelineleft span').addClass("glyphicon-triangle-top");
 $('.timelineright span').addClass("glyphicon-triangle-bottom");
 }
+
+
+
+$('.filterpostcontrol1').change(function(){
+        var post_id = $('#categories').val();
+        var period_value = $('#period').val();
+	
+	//alert(post_id);
+        $(".container-inner1").html("loading...");
+ 
+
+
+
+$.ajax({
+        url: "http://<?php echo $_SERVER[HTTP_HOST]; ?>/ihc/wordpress/wp-admin/admin-ajax.php",
+        data: {'action':'example_ajax_request1','cat_name': post_id,'period_value': period_value } ,
+        success:function(data) {
+            // This outputs the result of the ajax request
+           // console.log(data);
+$(".container-inner1").html(data);
+
+        },
+        error: function(errorThrown){
+//alert("Hello Ajax Error");
+           // console.log(errorThrown);
+        }
+    });  
+return false;
+    });
+
+
 
 
 });
